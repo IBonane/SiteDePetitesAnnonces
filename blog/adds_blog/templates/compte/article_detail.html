@@ -14,26 +14,42 @@
                     <img style="max-width:620px; max-height:420; border:1px solid lightgrey;"  src="{{ article.image.url }}" alt="image de l'article">
                     <h5 style="margin: 10px 0;">Publié le {{article.created_at|date:'j F Y à H:i'}}</h5>
                     <div style="margin: 20px 0;">{{article.desc|safe|linebreaks}}</div>
+
                     <div class="apparait-contact" style="width: 100%; text-align: center; background-color:  #2c3e50; color: white; font-weight: bold">
-                        <h3 style="margin: 10px 0;">Contacter le vendeur :</h3>
-                        <h2 style="margin: 10px 0;">M. {{article.author.CustomUser.lastname}}</h2>
-                        <h2 style="margin: 10px 0;">Tel: {{article.author.CustomUser.phone_number}}</h2>
-                        <h2 style="padding-bottom: 50px;">Email: {{article.author.CustomUser.email}}</h2>
+                        {% if user.is_authenticated and user.is_active %}
+                            <h3 style="margin: 10px 0;">Contacter le vendeur :</h3>
+                            <h2 style="margin: 10px 0;">M. {{article.author.CustomUser.lastname}}</h2>
+                            <h2 style="margin: 10px 0;">Tel: {{article.author.CustomUser.phone_number}}</h2>
+                            <h2 style="padding-bottom: 50px;">Email: {{article.author.CustomUser.email}}</h2>
+                        {% else %}
+                            <div style="background-color: red; color: white;font-family: bold; font-size: 20px"><h1>
+                            Connectez vous pour voir les coordonnées de l'annonceur !
+                            </h1></div>
+                        {% endif %}
                     </div>
+
                  </article>
             </td>
-                <div class="articles">
 
+
+                <div class="articles">
                       <td class="dispa-contact">
-                          <div style=" margin-top: -220px; font-size: 12px" class="box-img" >
-                            <h3 style="margin: 16px 0;">Contacter le vendeur :</h3>
-                            <img src="{% static 'images/contact.jpg' %}" alt='f"image : "{article.title}'>
-                            <h2 style="margin: 16px 0;">M. {{article.author.lastname}}</h2>
-                            <h2 style="margin: 10px 0;">Tel: {{article.author.phone_number}}</h2>
-                            <h2 style="margin: 16px 0;">Email: {{article.author.email}}</h2>
-                          </div>
+                        {% if user.is_authenticated and user.is_active %}
+                              <div style=" margin-top: -220px; font-size: 12px" class="box-img" >
+                                <h3 style="margin: 16px 0;">Contacter le vendeur :</h3>
+                                <img src="{% static 'images/contact.jpg' %}" alt='f"image : "{article.title}'>
+                                <h2 style="margin: 16px 0;">M. {{article.author.lastname}}</h2>
+                                <h2 style="margin: 10px 0;">Tel: {{article.author.phone_number}}</h2>
+                                <h2 style="margin: 16px 0;">Email: {{article.author.email}}</h2>
+                              </div>
+                        {% else %}
+                           <div style="background-color: red; color: white;font-family: bold; font-size: 20px"><h1>
+                            Connectez vous pour voir les coordonnées de l'annonceur !
+                            </h1></div>
+                        {% endif %}
                     </td>
                 </div>
+
         </table>
     </div>
 {% endblock %}
