@@ -23,10 +23,10 @@ class CreerAnnonce(CreateView):
         'title',
         'desc',
         'price',
-        'category',
         'author',
         'image',
     ]
+
     success_url = reverse_lazy('tableau_de_board:mes_annonces')
 
 
@@ -37,7 +37,6 @@ class EditerAnnonce(UpdateView):
         'title',
         'desc',
         'price',
-        'category',
         'image',
     ]
     success_url = reverse_lazy('tableau_de_board:mes_annonces')

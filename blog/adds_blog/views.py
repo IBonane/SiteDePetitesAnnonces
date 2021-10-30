@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from adds_blog.models import Article, Categorie
+from adds_blog.models import Article #Categorie
 
 
 class Home(ListView):
@@ -22,6 +22,7 @@ def search(request):
     return render(request, "compte/search.html", {"liste_articles": liste_articles})
 
 
-def category_maison(request):
+'''def category_maison(request):
     maison_article = Categorie.objects.filter(article="maison")
     return render(request, "compte/search.html", {"maison_article": maison_article})
+'''

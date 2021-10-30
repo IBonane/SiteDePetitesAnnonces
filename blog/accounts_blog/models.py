@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
+#from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 
 
@@ -30,8 +30,8 @@ class CustomUser(AbstractBaseUser):
     firstname = models.CharField(max_length=50, verbose_name="Nom")
     lastname = models.CharField(max_length=50, verbose_name="Prénom")
     email = models.EmailField(unique=True, max_length=255, blank=True, verbose_name="Email")
-    phone_number = models.TextField(max_length=13, unique=True, null=False, blank=False, verbose_name="Numéro de téléphone")
-    password = models.CharField(max_length=128, blank=False, verbose_name="Mot de passe")
+    phone_number = models.CharField(max_length=13, unique=True, null=False, blank=False, verbose_name="Numéro de téléphone")
+    password = models.CharField(max_length=15, blank=False, verbose_name="Mot de passe")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)

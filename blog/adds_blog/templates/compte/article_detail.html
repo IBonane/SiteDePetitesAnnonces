@@ -16,9 +16,9 @@
                     <div style="margin: 20px 0;">{{article.desc|safe|linebreaks}}</div>
                     <div class="apparait-contact" style="width: 100%; text-align: center; background-color:  #2c3e50; color: white; font-weight: bold">
                         <h3 style="margin: 10px 0;">Contacter le vendeur :</h3>
-                        <h2 style="margin: 10px 0;">M. {{article.author.lastname}}</h2>
-                        <h2 style="margin: 10px 0;">Tel: {{article.author.phone_number}}</h2>
-                        <h2 style="padding-bottom: 50px;">Email: {{article.author.email}}</h2>
+                        <h2 style="margin: 10px 0;">M. {{article.author.CustomUser.lastname}}</h2>
+                        <h2 style="margin: 10px 0;">Tel: {{article.author.CustomUser.phone_number}}</h2>
+                        <h2 style="padding-bottom: 50px;">Email: {{article.author.CustomUser.email}}</h2>
                     </div>
                  </article>
             </td>

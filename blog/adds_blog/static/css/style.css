@@ -132,9 +132,10 @@ a.active, a:hover{
 
 .articles {
     display: grid;
-    grid-template-columns: 1fr 1fr 2.5fr;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 2.5fr;
     width: 80%;
-    margin-left: 100px;
+    margin-left: 200px;
     margin-right: 50px;
     margin-bottom: 50px;
 }
@@ -275,7 +276,7 @@ footer {
     width: 50%;
     height: 200px;
     margin-top: -30px;
-    margin-left: 350px;
+    margin-left: 450px;
     margin-right: auto;
     border: 1px solid white;
     border-radius: 0.25rem;
@@ -470,4 +471,8 @@ div.ajout_article input {
     padding: 20px 0;
     margin: 20px 0;
     width: 100%;
+}
+
+div.ajout_article img{
+    multiple;
 }

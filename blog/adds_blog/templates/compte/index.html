@@ -9,7 +9,7 @@
 
     <div class="section-centre">
         <div class="categories dropdown">
-            <label class="dropbtn">☰ Categories</label>
+            <!--label class="dropbtn">☰ Categories</label-->
             <div class="dropdown-content">
                     <a href="#">
                        {% for cat in Category %}
@@ -29,7 +29,7 @@
 <div class="articles">
 
         {% for article in articles %}
-        <table style="text-align: center;margin: 50px 80px;" >
+        <table style="text-align: center;margin: 50px 50px;" >
                 <td>
                     <a href="{% url 'articles:article' slug=article.slug %}">
                         <div class="box-img" >

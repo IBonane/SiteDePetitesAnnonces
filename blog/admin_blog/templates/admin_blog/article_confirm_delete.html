@@ -1,11 +1,18 @@
 {% extends 'admin_blog/dashboard.html' %}
 
 {% block section%}
-  <form METHOD="POST">
-    {% csrf_token %}
-    <div class="formulaire">
-      <p style="color:red; font-weight: bold">Etes-vous sûr de vouloir supprimer "{{delete}}" ?</p>
-      <input type="submit" value="oui, supprimer" class="btn btn-delete">
-    </div>
-  </form>
+  {% if user.is_authenticated and user.is_staff %}
+    <form METHOD="POST">
+      {% csrf_token %}
+      <div class="formulaire">
+        <p style="color:red; font-weight: bold">Etes-vous sûr de vouloir supprimer "{{delete}}" ?</p>
+        <input type="submit" value="oui, supprimer" class="btn btn-delete">
+      </div>
+    </form>
+  {% else %}
+    <h1 style="text-align: center">
+      Faites une demande par mail au prêt de l'administrateur
+      du site afin de pouvoir poster  ou suprimer des annonces !
+    </h1>
+  {% endif %}
 {% endblock %}

@@ -2,20 +2,26 @@
 
 {% block section%}
 
-  {% for annonce in annonces %}
-    <article>
-      {% if user.is_authenticated and user.id == annonce.author.id%}
-      <div class="mes_annonces">
-        <h2>{{annonce.title}}</h2>
-          <div style="padding: 10px 0;">
-            <a style="padding-left: -50px;" href="{% url 'tableau_de_board:editer' slug=annonce.slug %}">Éditer</a>
-            <a style="margin-left: 25px;" href="{% url 'tableau_de_board:supprimer' slug=annonce.slug %}">Supprimer</a>
+  {% if user.is_authenticated and user.is_staff %}
+    {% for annonce in annonces %}
+      <article>
+        {% if user.is_authenticated and user.id == annonce.author.id%}
+          <div class="mes_annonces">
+            <h2>{{annonce.title}}</h2>
+              <div style="padding: 10px 0;">
+                <a style="padding-left: -50px;" href="{% url 'tableau_de_board:editer' slug=annonce.slug %}">Éditer</a>
+                <a style="margin-left: 25px;" href="{% url 'tableau_de_board:supprimer' slug=annonce.slug %}">Supprimer</a>
+              </div>
+            <h5 class="post-author">Publié le {{annonce.created_at|date:'j F Y'}}</h5>
           </div>
-        <h5 class="post-author">Publié le {{annonce.created_at|date:'j F Y'}}</h5>
-      </div>
-      {% endif %}
-    </article>
-
-  {% endfor%}
+        {% endif %}
+      </article>
+    {% endfor%}
+    {% else %}
+      <h1 style="text-align: center">
+      Faites une demande par mail au prêt de l'administrateur
+      du site afin de pouvoir poster des annonces !
+      </h1>
+  {% endif %}
 
 {% endblock %}

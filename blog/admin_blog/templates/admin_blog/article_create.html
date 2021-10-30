@@ -3,16 +3,22 @@
 {% block section%}
     <h1 style="text-align: center;">Ajout d'une annonce</h1>
     <div class="ajout_article">
-
-        <form METHOD="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <table>
-            {{form.as_table}}
-          </table>
-            <div style="text-align: center; margin-top: -50px; margin-left: -20px;">
-            <input style=" width: 50%;" type="submit" value="Créer" class="btn btn-submit">
-            </div>
-        </form>
+        {% if user.is_authenticated and user.is_staff %}
+            <form METHOD="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <table>
+                {{form.as_table}}
+              </table>
+                <div style="text-align: center; margin-top: -50px; margin-left: -20px;">
+                <input style=" width: 50%;" type="submit" value="Créer" class="btn btn-submit">
+                </div>
+            </form>
+        {% else %}
+            <h1>
+                Faites une demande par mail au prêt de l'administrateur
+                du site afin de pouvoir poster des annonces !
+            </h1>
+        {% endif %}
     </div>
 
 {% endblock %}
