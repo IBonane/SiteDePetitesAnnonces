@@ -1,0 +1,39 @@
+{% extends 'compte/base.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+    <a id="a-hover" style="background-color: none" href="{% url 'articles:home' %}"><button class="bouton-retour"> Retour</button></a>
+
+    <div class="vendeur-article">
+        <table style="text-align: center;margin: 0px 150px;">
+            <td>
+                <article class="article-detail">
+                    <h1>{{article.title}}</h1>
+                    <p>Categorie de l'article : <strong style="color:blue">{{article.category}}</strong></p>
+                    <br>
+                    <img style="max-width:620px; max-height:420; border:1px solid lightgrey;"  src="{{ article.image.url }}" alt="image de l'article">
+                    <h5 style="margin: 10px 0;">Publié le {{article.created_at|date:'j F Y à H:i'}}</h5>
+                    <div style="margin: 20px 0;">{{article.desc|safe|linebreaks}}</div>
+                    <div class="apparait-contact" style="width: 100%; text-align: center; background-color:  #2c3e50; color: white; font-weight: bold">
+                        <h3 style="margin: 10px 0;">Contacter le vendeur :</h3>
+                        <h2 style="margin: 10px 0;">M. {{article.author.lastname}}</h2>
+                        <h2 style="margin: 10px 0;">Tel: {{article.author.phone_number}}</h2>
+                        <h2 style="padding-bottom: 50px;">Email: {{article.author.email}}</h2>
+                    </div>
+                 </article>
+            </td>
+                <div class="articles">
+
+                      <td class="dispa-contact">
+                          <div style=" margin-top: -220px; font-size: 12px" class="box-img" >
+                            <h3 style="margin: 16px 0;">Contacter le vendeur :</h3>
+                            <img src="{% static 'images/contact.jpg' %}" alt='f"image : "{article.title}'>
+                            <h2 style="margin: 16px 0;">M. {{article.author.lastname}}</h2>
+                            <h2 style="margin: 10px 0;">Tel: {{article.author.phone_number}}</h2>
+                            <h2 style="margin: 16px 0;">Email: {{article.author.email}}</h2>
+                          </div>
+                    </td>
+                </div>
+        </table>
+    </div>
+{% endblock %}

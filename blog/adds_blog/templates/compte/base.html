@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="fr">
+
+    <head>
+        {% block title%} <title>RaagSongo</title> {% endblock %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">☰</label>
+            <a class="logo" href="{% url 'articles:home' %}">RaagSongo</a>
+            <ul>
+                <li><a class="active" href="{% url 'articles:home' %}">Accueil</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                {% if user.is_authenticated %}
+                    {% block li %}
+                    <li><a href="{% url 'tableau_de_board:dashboard' %}"></a></li>
+                    {% endblock%}
+                    <li><a  href="{% url 'tableau_de_board:creer' %}">📁 Poster une annonce</a></li>
+                    <li><a href="{% url 'compte:logout' %}">Deconnexion</a></li>
+                    <li><a>{{user.lastname}}</a></li>
+                {% else %}
+                    <li><a href="{% url 'compte:login' %}">Connexion</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <section class="marge-adds contenu-section">
+            {% block content %}
+            {% endblock %}
+        </section>
+        <section style="margin: 550px 0;">
+
+        </section>
+        <footer class="flex-rw">
+
+        <ul class="footer-list-top">
+            <li>
+            <h4 class="footer-list-header">A propos</h4></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Qui sommes nous ?</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Voir CV</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Devenir membre</a></li>
+        </ul>
+        <ul class="footer-list-top">
+            <li>
+            <h4 class="footer-list-header">Nos services</h4></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Voiture</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Maison</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Smartphone</a></li>
+        </ul>
+        <ul class="footer-list-top">
+            <li id='help'>
+            <h4 class="footer-list-header">Contact</h4></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">55-55-55-55</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Raagsongo@hj.com</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">7 rue patte d'oie, ouaga</a></li>
+        </ul>
+        </footer>
+    </body>
+</html>

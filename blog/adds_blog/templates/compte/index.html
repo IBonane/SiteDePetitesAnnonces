@@ -1,0 +1,48 @@
+{% extends 'compte/base.html' %}
+
+{% block content %}
+<section >
+   <div class="section-haut text-accroche">
+    <h3 style="margin: 50px 0 10px 0;">Avec la livraison chez vous en point relais tout est à portée de main !</h3>
+    <h5>Trouvez la bonne affaire parmi les millions de petites annonces leboncoin</h5>
+   </div>
+
+    <div class="section-centre">
+        <div class="categories dropdown">
+            <label class="dropbtn">☰ Categories</label>
+            <div class="dropdown-content">
+                    <a href="#">
+                       {% for cat in Category %}
+                       {% endfor %}
+                    </a>
+
+            </div>
+        </div>
+        <form class="form-input" action="{% url 'articles:search' %}">
+            <input class="search-bar" type="text" placeholder="Recherche" name="article">
+            <br><br>
+            <button class="button-search" type="input">Chercher</button>
+        </form>
+   </div>
+</section>
+    {% csrf_token %}
+<div class="articles">
+
+        {% for article in articles %}
+        <table style="text-align: center;margin: 50px 80px;" >
+                <td>
+                    <a href="{% url 'articles:article' slug=article.slug %}">
+                        <div class="box-img" >
+                            {% if article.image %}
+                                 <img src="{{ article.image.url }}" alt='f"image : "{article.title}'>
+                            {% endif %}
+                        <h2 style="margin: 3px 0;">{{article.title | safe | truncatewords:4}}</h2>
+                        <h5>Publié le {{article.created_at|date:'j F Y à H:i'}}</h5>
+                    </div></a>
+                </td>
+
+        </table>
+        {% endfor %}
+    </div>
+
+{% endblock %}

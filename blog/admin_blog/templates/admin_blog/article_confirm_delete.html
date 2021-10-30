@@ -1,0 +1,11 @@
+{% extends 'admin_blog/dashboard.html' %}
+
+{% block section%}
+  <form METHOD="POST">
+    {% csrf_token %}
+    <div class="formulaire">
+      <p style="color:red; font-weight: bold">Etes-vous sûr de vouloir supprimer "{{delete}}" ?</p>
+      <input type="submit" value="oui, supprimer" class="btn btn-delete">
+    </div>
+  </form>
+{% endblock %}

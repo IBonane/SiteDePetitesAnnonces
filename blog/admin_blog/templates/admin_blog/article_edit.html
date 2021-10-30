@@ -1,0 +1,18 @@
+{% extends 'admin_blog/dashboard.html' %}
+
+{% block section%}
+    <h1 style="text-align: center;">Modifier une annonce</h1>
+    <div class="ajout_article">
+
+        <form METHOD="POST">
+          {% csrf_token %}
+          <table>
+            {{form.as_table}}
+          </table>
+            <div style="text-align: center; margin-top: -50px; margin-left: -20px;">
+            <input style=" width: 50%;" type="submit" value="Modifier" class="btn btn-submit">
+
+            </div>
+        </form>
+    </div>
+{% endblock %}

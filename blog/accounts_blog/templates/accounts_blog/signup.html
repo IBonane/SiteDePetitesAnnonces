@@ -1,0 +1,16 @@
+{% extends 'compte/base.html' %}
+
+{% block content %}
+    <div style="width: 100%; background-color: orange; margin: -20px 0 50px 0;">
+        <h1 style="text-align: center; color: white; font-weight: bold;">Inscription</h1>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="formulaire">
+            <h1 style="margin: -20px 0 30px 0; font-weight: bold;">👥 Nouveau Compte</h1>
+            {{form.as_p}}
+            <input style="cursor: pointer; border-color: var(--color2); background-color: var(--color2); color: white;" type="submit" value="S'inscrire">
+            <p>Vous avez déjà un compte ?<a href="{% url 'compte:login' %}" style="color: blue"> connectez-vous.</a></p>
+        </div>
+    </form>
+{% endblock %}
