@@ -9,13 +9,11 @@
 
     <div class="section-centre">
         <div class="categories dropdown">
-            <!--label class="dropbtn">☰ Categories</label-->
+            <label class="dropbtn">☰ Categories</label>
             <div class="dropdown-content">
                     <a href="#">
-                       {% for cat in Category %}
-                       {% endfor %}
+                        <li>Vide</li>
                     </a>
-
             </div>
         </div>
         <form class="form-input" action="{% url 'articles:search' %}">

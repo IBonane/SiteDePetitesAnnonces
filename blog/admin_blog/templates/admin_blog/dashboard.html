@@ -8,9 +8,19 @@
         <h1 style="text-align: center; color: white; font-weight: bold;">Tableau de bord</h1>
     </div>
     <div class="marge-adds contenu-section">
+        {% if user.is_authenticated and user.is_staff %}
         {% block section %}
         <section></section>
         {% endblock %}
+        {% else %}
+            <h1 style="text-align: center">
+                Connectez-vous si vous avez les droits de publication.
+                Ou si vous l'êtes déjà,<br>faites une demande au prêt de l'administrateur
+                du site afin de pouvoir poster des annonces !
+                <br><br><a href="#">Faire la demande</a>
+            </h1>
+        {% endif %}
     </div>
+
 
 {% endblock %}

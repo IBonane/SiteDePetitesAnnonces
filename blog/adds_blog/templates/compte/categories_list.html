@@ -1,0 +1,16 @@
+{% extends 'compte/base.html' %}
+
+{% block content %}
+
+    <h1 style="text-align:center">Liste de recherche</h1>
+    <a id="a-hover" style="background-color: none" href="{% url 'articles:home' %}"><button class="bouton-retour"> Retour</button></a>
+    <div class="articles">
+        {% for cat in categories %}
+            <h1>{{ cat }}</h1>
+            {% for product in act.get_products %}
+                <p>{{ product }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

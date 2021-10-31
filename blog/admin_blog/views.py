@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from adds_blog.models import Article
 
@@ -26,7 +26,6 @@ class CreerAnnonce(CreateView):
         'author',
         'image',
     ]
-
     success_url = reverse_lazy('tableau_de_board:mes_annonces')
 
 
